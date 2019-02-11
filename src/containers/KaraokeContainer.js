@@ -11,7 +11,8 @@ class KaraokeContainer extends Component {
     this.state = {
       songs:[],
       isClicked: false,
-      value: ''
+      value: '',
+      songObj: {}
     }
   }
 
@@ -23,8 +24,13 @@ class KaraokeContainer extends Component {
     }));
   }
 
-  handleClick = (e) => {
-    console.log('Clicked play button:', e.target)
+  handleClick = (song) => {
+    this.setState({
+      songObj: song,
+      isClicked: true
+    });
+    //console.log('Clicked play button:', song)
+
   }
 
   handleChange= (e) => {
@@ -39,10 +45,10 @@ class KaraokeContainer extends Component {
       <div className="karaoke-container">
         <div className="sidebar">
           <Filter handleChange={this.handleChange} value={this.state.value}/>
-          <SongList isClicked={this.state.isClicked} songs={this.state.songs.filter(song=> song.title.includes(this.state.value))}/>
+          <SongList handleClick={this.handleClick} isClicked={this.state.isClicked} songs={this.state.songs.filter(song=> song.title.includes(this.state.value))}/>
         </div>
 
-        <KaraokeDisplay isClicked={this.state.isClicked} songs={this.state.songs}/>
+        <KaraokeDisplay songObj={this.state.songObj} isClicked={this.state.isClicked} />
       </div>
     );
   }
