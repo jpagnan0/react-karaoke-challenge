@@ -7,7 +7,7 @@ const KaraokeDisplay = props => {
           <h2>{props.songObj.title}</h2>
           <Lyrics lyrics={props.songObj.lyrics} />
         </div>
-      )
+      )  
 };
 
 export default KaraokeDisplay;

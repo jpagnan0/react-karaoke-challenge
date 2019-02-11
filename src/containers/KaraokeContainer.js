@@ -12,7 +12,7 @@ class KaraokeContainer extends Component {
       songs:[],
       isClicked: false,
       value: '',
-      songObj: {}
+      songObj: []
     }
   }
 
